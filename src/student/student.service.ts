@@ -11,9 +11,11 @@ export class StudentService {
     @InjectRepository(StudentUser)
     private readonly studentRepository: Repository<StudentUser>,
   ){}
-  async findAll(): Promise<StudentUser[]> {
-    return this.studentRepository.find();
+  async updateStudent(id: number, updateData: UpdateStudentDto): Promise<StudentUser> {
+    await this.studentRepository.update(id, updateData);
+    return this.studentRepository.findOne({ where: { id } });
   }
+  
   
   
   

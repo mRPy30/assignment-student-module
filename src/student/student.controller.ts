@@ -6,9 +6,9 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
-  @Get()
-findAll() {
-  return this.studentService.findAll();
+  @Patch(':id')
+update(@Param('id') id: number, @Body() updateStudentDto: UpdateStudentDto) {
+  return this.studentService.updateStudent(id, updateStudentDto);
 }
 
   
