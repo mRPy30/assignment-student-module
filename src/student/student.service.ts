@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateStudentDto } from './dto/update-student.dto';
+import { Controller, Delete, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StudentUser } from './entities/student.entity';
 import { Repository } from 'typeorm';
@@ -11,10 +11,10 @@ export class StudentService {
     @InjectRepository(StudentUser)
     private readonly studentRepository: Repository<StudentUser>,
   ){}
-  async updateStudent(id: number, updateData: UpdateStudentDto): Promise<StudentUser> {
-    await this.studentRepository.update(id, updateData);
-    return this.studentRepository.findOne({ where: { id } });
+  async deleteStudent(id: number): Promise<void> {
+    await this.studentRepository.delete(id);
   }
+  
   
   
   

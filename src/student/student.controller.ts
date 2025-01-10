@@ -6,10 +6,10 @@ import { UpdateStudentDto } from './dto/update-student.dto';
 export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
-  @Patch(':id')
-update(@Param('id') id: number, @Body() updateStudentDto: UpdateStudentDto) {
-  return this.studentService.updateStudent(id, updateStudentDto);
-}
-
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.studentService.deleteStudent(id);
+  }
+  
   
 }
