@@ -12,11 +12,6 @@ export class StudentService {
     private readonly studentRepository: Repository<StudentUser>,
   ) {}
 
-  async createStudent(studentData: CreateStudentDto): Promise<StudentUser> {
-    const student = this.studentRepository.create(studentData);
-    return this.studentRepository.save(student);
-  }
-
   async findAll(): Promise<StudentUser[]> {
     return this.studentRepository.find(); 
   }
