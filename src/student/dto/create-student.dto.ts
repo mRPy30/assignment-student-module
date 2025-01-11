@@ -1,4 +1,5 @@
 import { IsString, IsEmail, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateStudentDto {
   @IsString()
@@ -11,5 +12,6 @@ export class CreateStudentDto {
   email: string;
 
   @IsDate()
+  @Type(() => Date)
   enrollmentDate: Date;
 }
